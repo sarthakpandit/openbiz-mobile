@@ -5,30 +5,30 @@
         <meta name="format-detection" content="telephone=no" />
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />        
         <link rel="stylesheet" type="text/css" href="js/jquery-mobile/jquery.mobile-1.1.1.min.css" />
+        <script type="text/javascript" src="js/openbiz/openbiz-mo.js"></script>
         <script type="text/javascript" src="cordova-2.1.0.js"></script>
         <script type="text/javascript" src="js/jquery/jquery-1.8.2.min.js"></script>
         <script type="text/javascript" src="js/jquery-mobile/jquery.mobile-1.1.1.min.js"></script>
-        <script type="text/javascript" src="js/openbiz/openbiz.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
+        
+        <script type="text/javascript">
+        $(document).ready(function(){
+        	OpenbizMo.init();        	
+        })
+        
+        </script>
     </head>
     <body>
         
-           <script type="text/javascript">
-           $(document).ready(function(){
-            	app.initialize();
-           });
-           </script>
+           
         	
-        	<div data-role="page">
+        	<div id="main"  data-role="page">
 
 				<div data-role="header">
 					<h1>Single page</h1>
 				</div><!-- /header -->
 			
 				<div data-role="content">	
-					<p>This is a single page boilerplate template that you can copy to build your first jQuery Mobile page. Each link or form from here will pull a new page in via Ajax to support the animated page transitions.</p>		
-					<p>Just view the source and copy the code to get started. All the CSS and JS is linked to the jQuery CDN versions so this is super easy to set up. Remember to include a meta viewport tag in the head to set the zoom level.</p>
-					<p>This template is standard HTML document with a single "page" container inside, unlike a <a href="multipage-template.html" data-ajax="false">multi-page template</a> that has multiple pages within it. We strongly recommend building your site or app as a series of separate pages like this because it's cleaner, more lightweight and works better without JavaScript.</p>
+					<p>click this to test <a data-transition="turn" href="#lost_connection">lost connection</a>.</p>		
 				</div><!-- /content -->
 				
 				<div data-role="footer">
@@ -37,5 +37,18 @@
 				
 			</div><!-- /page -->
 
+
+
+			<div id="lost_connection" data-role="page">
+				<div data-role="header">
+					<h1>Single page</h1>
+				</div><!-- /header -->
+			
+				<div data-role="content">	
+					you have no internet connection
+				</div><!-- /content -->
+				
+				
+			</div><!-- /page -->
         </body>
 </html>

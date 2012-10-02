@@ -13,6 +13,9 @@
         <script type="text/javascript" src="js/jquery-mobile/jquery.mobile-1.2.0-rc.2.min.js"></script>
 <!--         <script src="http://debug.phonegap.com/target/target-script-min.js#OpenbizMobile"></script> -->
         <script type="text/javascript">
+        $( document ).bind( "mobileinit", function() {
+            $.mobile.allowCrossDomainPages = true;
+        });
         $(document).ready(function(){
         	OpenbizMo.init();        
         	$('#account-setup').live("pagebeforeshow",function(event,ui)
@@ -51,6 +54,8 @@
 			        data-iconpos="left">
 			            Setup
 			        </a>
+			        
+			        
 			    </div>
 				
 			</div>
@@ -79,7 +84,7 @@
 				            Home
 				    </a>
 			    </div>
-			    <form id="account-setup-form" >
+			    <form id="account-setup-form"  action="" data-ajax="false" onSubmit="return OpenbizMo.saveAndLogin()">
 			    <div data-role="content">
 			        <div data-role="fieldcontain">
 			            <fieldset data-role="controlgroup">
@@ -104,8 +109,9 @@
 			                type="password">
 			            </fieldset>
 			        </div>
-			        <input data-theme="b" onclick="javascript:OpenbizMo.saveAndLogin()" data-icon="arrow-r" data-iconpos="right" value="Login"
-			        type="button">
+			        <input data-theme="b" data-icon="arrow-r" data-iconpos="right" value="Login"
+			        type="submit">
+			        
 			    </div>
 			    </form>
 			</div>

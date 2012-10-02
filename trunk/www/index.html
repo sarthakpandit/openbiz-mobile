@@ -4,51 +4,110 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />        
-        <link rel="stylesheet" type="text/css" href="js/jquery-mobile/jquery.mobile-1.1.1.min.css" />
+        <link rel="stylesheet" type="text/css" href="js/jquery-mobile/jquery.mobile-1.2.0-rc.2.min.css" />
+        <link rel="stylesheet" type="text/css" href="js/jquery/jquery.validate.css" />
         <script type="text/javascript" src="js/openbiz/openbiz-mo.js"></script>
         <script type="text/javascript" src="cordova-2.1.0.js"></script>
         <script type="text/javascript" src="js/jquery/jquery-1.8.2.min.js"></script>
-        <script type="text/javascript" src="js/jquery-mobile/jquery.mobile-1.1.1.min.js"></script>
-        
+        <script type="text/javascript" src="js/jquery/jquery.validate.min.js"></script>
+        <script type="text/javascript" src="js/jquery-mobile/jquery.mobile-1.2.0-rc.2.min.js"></script>
+<!--         <script src="http://debug.phonegap.com/target/target-script-min.js#OpenbizMobile"></script> -->
         <script type="text/javascript">
         $(document).ready(function(){
-        	OpenbizMo.init();        	
+        	OpenbizMo.init();        
+        	$('#account-setup').live("pagebeforeshow",function(event,ui)
+	        {
+	        		$('#account-setup #username').val(	window.localStorage.getItem('username')	);
+	        		$('#account-setup #password').val(	window.localStorage.getItem('password')	);
+	        		$('#account-setup #server_uri').val(window.localStorage.getItem('server_uri'));
+	        			        		
+	        });
+        	$('#account-setup-form').validate({
+    			rules:{
+    				server_uri:{
+    					required:true,
+    					url:true
+    				}
+    			}
+    		});
         })
-        
         </script>
     </head>
     <body>
         
            
-        	
+        	<!-- Lost Connection -->
         	<div id="main"  data-role="page">
 
+			    <div data-role="content">
+			        <h2>
+			            Openbiz Mobile
+			        </h2>
+			        <a data-theme="b" data-role="button"  data-inline="true" href="javascript:OpenbizMo.checkLocalCredential()" data-icon="home"
+			        data-iconpos="left">
+			            Login
+			        </a>
+			        <a data-theme="b" data-role="button" data-transition="slide" data-inline="true" href="#account-setup" data-icon="gear"
+			        data-iconpos="left">
+			            Setup
+			        </a>
+			    </div>
+				
+			</div>
+
+
+			<!-- Lost Connection -->
+			<div id="lost-connection" data-role="page">
 				<div data-role="header">
 					<h1>Single page</h1>
-				</div><!-- /header -->
-			
-				<div data-role="content">	
-					<p>click this to test <a data-transition="turn" href="#lost_connection">lost connection</a>.</p>		
-				</div><!-- /content -->
-				
-				<div data-role="footer">
-					<h4>Footer content</h4>
-				</div><!-- /footer -->
-				
-			</div><!-- /page -->
-
-
-
-			<div id="lost_connection" data-role="page">
-				<div data-role="header">
-					<h1>Single page</h1>
-				</div><!-- /header -->
+				</div>
 			
 				<div data-role="content">	
 					you have no internet connection
-				</div><!-- /content -->
-				
-				
-			</div><!-- /page -->
+				</div>
+			</div>
+			
+			
+			<!-- Account Setup Page -->
+			<div id="account-setup" data-role="page">
+			    <div data-theme="b" data-role="header" >
+			        <h3>
+			           Account Setup
+			        </h3>
+			        <a data-role="button" data-direction="reverse" data-transition="slide" data-rel="back"
+				        data-icon="home" data-iconpos="left" class="ui-btn-left">
+				            Home
+				    </a>
+			    </div>
+			    <form id="account-setup-form" >
+			    <div data-role="content">
+			        <div data-role="fieldcontain">
+			            <fieldset data-role="controlgroup">
+			                <label for="server_uri">
+			                    Server URL
+			                </label>
+			                <input name="server_uri" id="server_uri" placeholder="http://i.openbiz.cn"
+			                 type="url" required="required">
+			            </fieldset>
+			 		</div>
+			        <div data-role="fieldcontain">            
+			        	<fieldset data-role="controlgroup">
+			                <label for="username">
+			                    Username
+			                </label>
+			                <input name="username" required="required" id="username" placeholder="admin" value="" type="text">
+			       		
+			                <label for="password" >
+			                    Password
+			                </label>
+			                <input name="password" required="required" id="password" placeholder="Password" value=""
+			                type="password">
+			            </fieldset>
+			        </div>
+			        <input data-theme="b" onclick="javascript:OpenbizMo.saveAndLogin()" data-icon="arrow-r" data-iconpos="right" value="Login"
+			        type="button">
+			    </div>
+			    </form>
+			</div>
         </body>
 </html>

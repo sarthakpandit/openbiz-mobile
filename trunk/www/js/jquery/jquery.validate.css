@@ -1,0 +1,12 @@
+input.error {
+    border: 1px solid #ff0000;
+    color:#ff0000;
+    background-color:#fff3f3;
+}
+div.error {
+    display: none;
+}
+form.cmxform label.error, label.error {
+    color:#ff0000;
+    font-style: italic;
+}

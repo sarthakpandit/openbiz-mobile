@@ -34,22 +34,22 @@ var OpenbizMo =
 	saveAndLogin:function()
 	{		
 		//check Server
-		if(!$('#account-setup-form').validate().element('#account-setup #server_uri')){
+		if(!$('#account-setting-form').validate().element('#account-setting #server_uri')){
 			return false;
 		}		
-		server_uri = $('#account-setup #server_uri').val();
+		server_uri = $('#account-setting #server_uri').val();
 		OpenbizMo.checkServer(server_uri);
 		
 		//validate login 
-		if( !$('#account-setup-form').validate().element('#account-setup #username') ||
-			!$('#account-setup-form').validate().element('#account-setup #password')){
+		if( !$('#account-setting-form').validate().element('#account-setting #username') ||
+			!$('#account-setting-form').validate().element('#account-setting #password')){
 			return false;
 		}
 		credential = {				
-				username: $('#account-setup #username').val(),
-				password: $('#account-setup #password').val()
+				username: $('#account-setting #username').val(),
+				password: $('#account-setting #password').val()
 		};
-		OpenbizMo.remoteLogin(credential);
+		OpenbizMo.remoteLogin(server_uri,credential);
 		return false;
 	},
 	
@@ -94,13 +94,14 @@ var OpenbizMo =
 						username: window.localStorage.getItem('username'),
 						password: window.localStorage.getItem('password')
 				};
-				OpenbizMo.remoteLogin(credential);				
+				server_uri=window.localStorage.getItem('server_uri');
+				OpenbizMo.remoteLogin(server_uri,credential);				
 			}else{
 				$.mobile.changePage( "#account-setting", { transition: "slideup"} );
 			}
 		
 	},
-	remoteLogin:function(credential)
+	remoteLogin:function(server_uri,credential)
 	{
 		$.mobile.loading( 'show', {
 			text: 'Login to server...',

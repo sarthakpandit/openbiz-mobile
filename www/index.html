@@ -21,18 +21,19 @@
         	OpenbizMo.init();        
         	$('#account-setting').live("pagebeforeshow",function(event,ui)
 	        {
-	        		$('#account-setup #username').val(	window.localStorage.getItem('username')	);
-	        		$('#account-setup #password').val(	window.localStorage.getItem('password')	);
-	        		$('#account-setup #server_uri').val(window.localStorage.getItem('server_uri'));
+	        		$('#account-setting #username').val(	window.localStorage.getItem('username')	);
+	        		$('#account-setting #password').val(	window.localStorage.getItem('password')	);
+	        		$('#account-setting #server_uri').val(window.localStorage.getItem('server_uri'));
 	        			        		
 	        });
         	$('#main').live("pagebeforeshow",function(event,ui)
         	{
+    			console.log(window.localStorage.getItem('server_system_name'));
+
         			$('#main #remote-system-name').text(window.localStorage.getItem('server_system_name')	);
-        			console.log(window.localStorage.getItem('server_system_name'));
         	        			        		
         	});
-        	$('#account-setup-form').validate({
+        	$('#account-setting-form').validate({
     			rules:{
     				server_uri:{
     					required:true,
@@ -120,7 +121,7 @@
 				            Home
 				    </a>
 			    </div>
-			    <form id="account-setup-form"  action="" data-ajax="false" onSubmit="return OpenbizMo.saveAndLogin()">
+			    <form id="account-setting-form"  action="" data-ajax="false" onSubmit="return OpenbizMo.saveAndLogin()">
 			    <div data-role="content">
 			        <div data-role="fieldcontain">
 			            <fieldset data-role="controlgroup">

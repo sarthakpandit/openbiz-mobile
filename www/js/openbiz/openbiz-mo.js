@@ -5,9 +5,10 @@ var OpenbizMo =
 	{
 		document.addEventListener('deviceready', OpenbizMo.checkConnection, false);
 		document.addEventListener('online', OpenbizMo.checkDeviceOnline, false);
-		if(window.localStorage.getItem('server_system_name')){}
+		if(window.localStorage.getItem('server_system_name'))
+		{
 			$('#main #remote-system-name').text(window.localStorage.getItem('server_system_name'));
-		}
+		};
 		if(window.localStorage.getItem('server_system_icon'))
 		{
 			$('#main .server-logo').src=window.localStorage.getItem('server_system_icon');
@@ -94,7 +95,7 @@ var OpenbizMo =
 	Login:function(){
 		if(window.localStorage.getItem('server_uri') && 
 			window.localStorage.getItem('username') && 
-			window.localStorage.getItem('password'))
+			window.localStorage.getItem('password') )
 			{
 				console.log(window.localStorage.getItem('server_uri'));
 				credential = {				
@@ -104,6 +105,7 @@ var OpenbizMo =
 				server_uri=window.localStorage.getItem('server_uri');
 				OpenbizMo.remoteLogin(server_uri,credential);				
 			}else{
+				console.log('no crediential data');
 				$.mobile.changePage( "#account-setting", { transition: "slideup"} );
 			}
 		

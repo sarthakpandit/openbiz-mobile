@@ -5,8 +5,13 @@ var OpenbizMo =
 	{
 		document.addEventListener('deviceready', OpenbizMo.checkConnection, false);
 		document.addEventListener('online', OpenbizMo.checkDeviceOnline, false);
-		$('#main #remote-system-name').text(window.localStorage.getItem('server_system_name'));
-		$('#main .server-logo').src=window.localStorage.getItem('server_system_icon');  
+		if(window.localStorage.getItem('server_system_name')){}
+			$('#main #remote-system-name').text(window.localStorage.getItem('server_system_name'));
+		}
+		if(window.localStorage.getItem('server_system_icon'))
+		{
+			$('#main .server-logo').src=window.localStorage.getItem('server_system_icon');
+		}
 	},
 	
 	

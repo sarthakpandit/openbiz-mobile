@@ -4,7 +4,8 @@ var OpenbizMo =
 	init:function()
 	{
 		document.addEventListener('deviceready', OpenbizMo.checkConnection, false);
-		document.addEventListener('online', OpenbizMo.checkDeviceOnline, false);		
+		document.addEventListener('online', OpenbizMo.checkDeviceOnline, false);
+		$('#main #remote-system-name').text(window.localStorage.getItem('server_system_name'));
 	},
 	
 	

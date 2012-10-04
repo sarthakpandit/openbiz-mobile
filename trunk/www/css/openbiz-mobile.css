@@ -1,0 +1,28 @@
+h2{
+padding:0px;
+margin:0px;
+font-size:22px;
+color:#0080b0;
+}
+div.content
+{
+text-align:center;
+}
+div#main img.server-logo
+{
+margin-left:auto;margin-right:auto;
+width:50%;
+height:auto;
+display:block;
+}
+div#lost-connection{
+background-image:url(../img/lost-connection-bg.png);
+background-repeat:no-repeat;
+background-position:center center;
+background-attachment:scroll;
+background-size:100% 100%;
+}
+
+div#lost-connection .content{
+padding-top:6cm;
+}

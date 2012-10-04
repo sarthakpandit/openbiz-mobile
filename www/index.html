@@ -6,6 +6,7 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />        
         <link rel="stylesheet" type="text/css" href="js/jquery-mobile/jquery.mobile-1.2.0-rc.2.min.css" />
         <link rel="stylesheet" type="text/css" href="js/jquery/jquery.validate.css" />
+        <link rel="stylesheet" type="text/css" href="css/openbiz-mobile.css" />
         <script type="text/javascript" src="js/openbiz/openbiz-mo.js"></script>
         <script type="text/javascript" src="cordova-2.1.0.js"></script>
         <script type="text/javascript" src="js/jquery/jquery-1.8.2.min.js"></script>
@@ -42,42 +43,74 @@
         	<!-- Lost Connection -->
         	<div id="main"  data-role="page">
 
-			    <div data-role="content">
-			        <h2>
-			            Openbiz Mobile
-			        </h2>
+			    <div data-role="content" class="content">
+			    
+			        <img src="img/server-logo.png" class="server-logo" />
+			        
 			        <a data-theme="b" data-role="button"  data-inline="true" href="javascript:OpenbizMo.checkLocalCredential()" data-icon="home"
 			        data-iconpos="left">
 			            Login
 			        </a>
-			        <a data-theme="b" data-role="button" data-transition="slide" data-inline="true" href="#account-setup" data-icon="gear"
+			        <a data-theme="b" data-role="button" data-transition="slidedown" data-inline="true" href="#account-setup" data-icon="gear"
 			        data-iconpos="left">
-			            Setup
+			            Setting
 			        </a>
-			        
-			        
+			        <a data-theme="b" data-role="button" data-transition="slidedown" data-inline="true" href="#lost-connection" data-icon="gear"
+			        data-iconpos="left">
+			            test
+			        </a>
+			    </div>
+			    <div data-theme="f" data-role="footer" data-position="fixed">
+			        <div class="ui-grid-a">
+			            <div class="ui-block-a">
+			            Openbiz Mobile<br/>Version 1.1
+			            </div>
+			            <div class="ui-block-b">
+			            	<a data-transition="slideup" data-inline="true" href="#about-app">Account Setting</a>
+			            </div>
+			        </div>
 			    </div>
 				
 			</div>
 
 
 			<!-- Lost Connection -->
-			<div id="lost-connection" data-role="page">
-				<div data-role="header">
-					<h1>Single page</h1>
-				</div>
-			
-				<div data-role="content">	
-					you have no internet connection
-				</div>
+			<div id="lost-connection" data-role="page" >
+				
+				<div class="content" data-role="content">	
+					<h2>No Internet</h2>
+					<p>Please connect your mobile to internet then click retry button.</p>
+								
+					<a data-theme="b" data-role="button"  data-inline="true" href="javascript:OpenbizMo.checkDeviceOnline()" data-icon="refresh">
+				            Retry
+				    </a>
+			    </div>
 			</div>
 			
+			<!-- About Openbiz mobile -->
+			<div id="about-app" data-role="page" >
+				<div data-theme="b" data-role="header" >
+			        <h3>
+			           About Openbiz 
+			        </h3>
+			        <a data-role="button" data-direction="reverse" data-transition="slide" data-rel="back"
+				        data-icon="home" data-iconpos="left" class="ui-btn-left">
+				            Home
+				    </a>
+			    </div>
+				<div class="content" data-role="content">	
+					<h2>Openbiz Mobile</h2>
+					<p>Openbiz Mobile App is a mobile client for Openbiz Based web system. This app is designed for deliver better Openbiz Products user experence on mobile based device ,It could help users implement quick login.</p>
+					<p>Openbiz Mobile is OpenSource Project. You can download and review our source code at http://code.google.com/p/openbiz-mobile</p>
+				
+			    </div>
+			</div>
 			
 			<!-- Account Setup Page -->
 			<div id="account-setup" data-role="page">
 			    <div data-theme="b" data-role="header" >
 			        <h3>
-			           Account Setup
+			           Account Setting
 			        </h3>
 			        <a data-role="button" data-direction="reverse" data-transition="slide" data-rel="back"
 				        data-icon="home" data-iconpos="left" class="ui-btn-left">

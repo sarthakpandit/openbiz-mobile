@@ -8,12 +8,6 @@ var OpenbizMo =
 	},
 	
 	
-	checkLocalCredential:function()
-	{
-	   
-	},
-	
-	
 	
 	checkConnection:function() {
 	    var networkState = navigator.network.connection.type;
@@ -21,18 +15,18 @@ var OpenbizMo =
 	    if( networkState==Connection.NONE || 
 	    	networkState==Connection.UNKNOWN)
 	    {
-	    	$.mobile.changePage( "#lost-connection", { transition: "turn"} );
+	    	$.mobile.changePage( "#lost-connection", { transition: "slideup"} );
 	    }
 		
 	},
 	
 	
 	checkDeviceOnline:function(){
-	
+		var networkState = navigator.network.connection.type;
 		if( networkState!=Connection.NONE && 
 		    networkState!=Connection.UNKNOWN)
-		    {
-				location.href='index.html';
+		    {				
+				$.mobile.changePage( "#main", { transition: "slidedown"} );
 		    }
 	},
 	
@@ -120,7 +114,8 @@ var OpenbizMo =
 					console.log(window.localStorage.getItem('server_uri'));
 
 					var anchor = document.createElement('a');
-					var default_view = '/index.php/system/general_default#app_menus_page';
+					//var default_view = '/index.php/system/general_default#app_tabs_page';
+					var default_view = '/index.php/contact_mob/contact_list';
 		            anchor.setAttribute('href', window.localStorage.getItem('server_uri')+default_view);		            
 		            var dispatch = document.createEvent('HTMLEvents')
 		            dispatch.initEvent('click', true, true);		            

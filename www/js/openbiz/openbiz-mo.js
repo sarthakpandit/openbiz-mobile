@@ -105,6 +105,11 @@ var OpenbizMo =
 	},
 	remoteLogin:function(server_uri,credential)
 	{
+		$('#account-setting #server_uri').blur();
+		$('#account-setting #username').blur();
+		$('#account-setting #password').blur();
+
+		
 		$.mobile.loading( 'show', {
 			text: 'Login to server...',
 			textVisible: true,
@@ -143,7 +148,10 @@ var OpenbizMo =
 				}
 				else
 				{
-					
+					$.mobile.loading( 'hide' );				
+					console.log('login failed!');
+					var validator = $("#account-setting-form").validate();
+					validator.showErrors({"password": "Incorrect password"});
 					return false;
 				}
 			}

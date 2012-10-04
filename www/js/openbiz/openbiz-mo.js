@@ -84,7 +84,22 @@ var OpenbizMo =
 		});
 	},
 	
-	
+	Login:function(){
+		if(window.localStorage.getItem('server_uri') && 
+			window.localStorage.getItem('username') && 
+			window.localStorage.getItem('password'))
+			{
+				console.log(window.localStorage.getItem('server_uri'));
+				credential = {				
+						username: window.localStorage.getItem('username'),
+						password: window.localStorage.getItem('password')
+				};
+				OpenbizMo.remoteLogin(credential);				
+			}else{
+				$.mobile.changePage( "#account-setting", { transition: "slideup"} );
+			}
+		
+	},
 	remoteLogin:function(credential)
 	{
 		$.mobile.loading( 'show', {

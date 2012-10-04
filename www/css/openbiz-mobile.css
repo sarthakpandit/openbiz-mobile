@@ -8,12 +8,59 @@ div.content
 {
 text-align:center;
 }
+.right-line{
+height:60px;
+}
+.btn-about-app{
+font-size:12px;
+text-decoration:none;
+color:#666666;
+background-image:url(../img/icon-openbiz.png);
+background-repeat:no-repeat;
+background-position:left 5px;
+padding-left:45px;
+padding-top:18px;
+line-height:16px;
+display:block;
+height:50px;
+width:100px;
+margin-left:30px;
+}
+.btn-about-app .version{
+	font-size:10px;
+	display:block;
+}
+.btn-account-setting
+{
+font-size:12px;
+text-decoration:none;
+color:#666666;
+background-image:url(../img/icon-gear.png);
+background-repeat:no-repeat;
+background-position:left 8px;
+padding-left:45px;
+padding-top:12px;
+line-height:16px;
+display:block;
+height:50px;
+width:60px;
+margin-left:0px;
+}
+.btn-account-setting:active
+{
+	color:#2489CE;
+}
 div#main img.server-logo
 {
 margin-left:auto;margin-right:auto;
 width:50%;
 height:auto;
 display:block;
+margin-bottom:1cm;
+}
+div#main p#remote-system-name
+{
+margin:0px;
 }
 div#lost-connection{
 background-image:url(../img/lost-connection-bg.png);
@@ -22,7 +69,12 @@ background-position:center center;
 background-attachment:scroll;
 background-size:100% 100%;
 }
-
+div#main .content{
+padding-top:2cm;
+}
 div#lost-connection .content{
 padding-top:6cm;
+}
+div#about-app .content{
+text-align:left;
 }

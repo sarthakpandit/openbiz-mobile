@@ -19,13 +19,19 @@
         });
         $(document).ready(function(){
         	OpenbizMo.init();        
-        	$('#account-setup').live("pagebeforeshow",function(event,ui)
+        	$('#account-setting').live("pagebeforeshow",function(event,ui)
 	        {
 	        		$('#account-setup #username').val(	window.localStorage.getItem('username')	);
 	        		$('#account-setup #password').val(	window.localStorage.getItem('password')	);
 	        		$('#account-setup #server_uri').val(window.localStorage.getItem('server_uri'));
 	        			        		
 	        });
+        	$('#main').live("pagebeforeshow",function(event,ui)
+        	{
+        			$('#main #remote-system-name').text(window.localStorage.getItem('server_system_name')	);
+        			console.log(window.localStorage.getItem('server_system_name'));
+        	        			        		
+        	});
         	$('#account-setup-form').validate({
     			rules:{
     				server_uri:{
@@ -47,26 +53,23 @@
 			    
 			        <img src="img/server-logo.png" class="server-logo" />
 			        
-			        <a data-theme="b" data-role="button"  data-inline="true" href="javascript:OpenbizMo.checkLocalCredential()" data-icon="home"
-			        data-iconpos="left">
+			        <a data-theme="b" data-role="button"  data-inline="true" style="width:80%" onclick="javascript:OpenbizMo.Login()" data-icon=""
+			        data-iconpos="">
 			            Login
 			        </a>
-			        <a data-theme="b" data-role="button" data-transition="slidedown" data-inline="true" href="#account-setup" data-icon="gear"
-			        data-iconpos="left">
-			            Setting
-			        </a>
-			        <a data-theme="b" data-role="button" data-transition="slidedown" data-inline="true" href="#lost-connection" data-icon="gear"
-			        data-iconpos="left">
-			            test
-			        </a>
+			        
+			        <p id="remote-system-name">Remtoe System</p>
 			    </div>
-			    <div data-theme="f" data-role="footer" data-position="fixed">
-			        <div class="ui-grid-a">
-			            <div class="ui-block-a">
-			            Openbiz Mobile<br/>Version 1.1
+			    <div data-theme="f" data-role="footer" data-position="fixed" style="height:60px;" >
+			        <div class="ui-grid-a" >
+			            <div class="ui-block-a right-line" style="width:60%;" >
+			            	<a class="btn-about-app" style="color:#666666;" data-transition="slideup" data-inline="true" href="#about-app">
+			            	Openbiz Mobile
+			            	<span class="version">Version 1.1</span>
+			            	</a>
 			            </div>
-			            <div class="ui-block-b">
-			            	<a data-transition="slideup" data-inline="true" href="#about-app">Account Setting</a>
+			            <div class="ui-block-b"  style="width:40%;">
+			            	<a class="btn-account-setting" style="color:#666666;" data-transition="slideup" data-inline="true" href="#account-setting">Account Setting</a>
 			            </div>
 			        </div>
 			    </div>
@@ -107,7 +110,7 @@
 			</div>
 			
 			<!-- Account Setup Page -->
-			<div id="account-setup" data-role="page">
+			<div id="account-setting" data-role="page">
 			    <div data-theme="b" data-role="header" >
 			        <h3>
 			           Account Setting
